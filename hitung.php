@@ -3,55 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terimakasih Sudah Belanja</title>
     <style>
-		fieldset{
-			width: 250px;
-			border-color: black;
-			box-shadow: 2px 2px 4px #333;
-		}
-</style>
+        table{
+            border-collapse: collapse;
+        }
+    </style>
+    <title>Struk Pembelian</title>
 </head>
 <body>
-    <fieldset>
-        <legend align="center">Struk Pembelian</legend>
-        <pre>---------------------------------------</pre>
-        <h4>*****Toko Cat Guna Bangun Jaya*****</h4>
-        <pre>---------------------------------------</pre>
-        <pre>Nama Customer : <?php echo $_POST['nama'];?></pre>
-        <pre>Alamat        : <?php echo $_POST['alamat']; ?></pre>
-        <pre>Jenis Cat     : <?php echo $_POST['jenis']; ?></pre>
-        <pre>Warna         : <?php echo $_POST['warna'];?></pre>
-        <pre>Harga         : <?php $harga = $_POST['jenis'];
-        if($_POST['jenis'] == "Bituminous Paint"){
-            echo $harga = 20000;
-        }elseif($_POST['jenis'] == "Chlorinated Rubber"){
-            echo $harga = 30000;
-        }elseif($_POST['jenis'] == "Vinyl"){
-            echo $harga = 40000;
+<center> 
+<p>============================================</p>
+<h3>Toko Cat Jaya Berkah</h3>
+<p>============================================</p>
+<table>
+    <tr>
+        <td><pre>Nama         : <?php echo $_POST["nama"]; ?></pre></td>
+    </tr>
+    <tr>
+        <td><pre>Alamat       : <?php echo $_POST["alamat"]; ?></pre></td>
+    </tr>
+    <tr>
+        <td><pre>Jenis Cat    : <?php echo $_POST["jenis"]; ?></pre></td>
+    </tr>
+    <tr>
+        <td><pre>Warna        : <?php echo $_POST["warna"]; ?></pre></td>
+    </tr>
+        <td><pre>Harga        : <?php $harga = $_POST["jenis"];
+        if($_POST["jenis"] == "Bituminous Paint"){
+            echo "Rp. " . $harga = 20000;
+        }elseif($_POST["jenis"] == "Chlorinated Rubber"){
+            echo "Rp. " . $harga = 30000;
+        }elseif($_POST["jenis"] == "Vinyl"){
+            echo "Rp. " . $harga = 40000;
         }else{
-            echo "Silahkan pilih jenis cat dan warna terlebih dahulu";
+            echo "Anda belum memilih jenis cat ! Silahkan pilih jenis cat terlebih dahulu.";
         }
-        ?></pre>
-        <pre>Jumlah Beli   : <?php echo $_POST['jumlah_beli']?></pre>
-        <pre>---------------------------------------</pre>
-        <pre>Total Harga   : <?php $total;
-        echo $total = $harga * $_POST['jumlah_beli'];?></pre>
-        <pre>Diskon        : <?php $diskon = $_POST['jumlah_beli'];
-        if($_POST['jumlah_beli'] >= 5 && $_POST['jumlah_beli'] < 10){
-            echo $diskon = $harga * $_POST['jumlah_beli'] * 5 /100;
-        }elseif($_POST['jumlah_beli'] >= 10){
-            echo $diskon = $harga * $_POST['jumlah_beli'] * 10 /100;
+        ?></pre></td>
+    <tr>
+        <td><pre>Jumlah Beli  : <?php echo $_POST["jumlah"]; ?></pre></td>
+    </tr>
+</table>
+<p>------------------------------------------------------------------ (*)</p>
+</center>
+<center>
+<table>
+    <tr>
+        <td><pre>Total Harga : <?php $total; 
+             echo "Rp." . $total = $harga * $_POST["jumlah"]; ?></pre></td>
+    </tr>
+    <tr>
+        <td><pre>Diskon      : <?php $diskon = $_POST["jumlah"];  
+        if($_POST["jumlah"] >= 5 && $_POST["jumlah"] < 10){
+            echo $diskon = $harga * $_POST["jumlah"] * 5 / 100;
+        } elseif($_POST["jumlah"] >= 10){
+            echo $diskon = $harga * $_POST["jumlah"] * 10 / 100;
         }else{
             echo $diskon = 0;
         }
-        ?></pre>
-        <pre>---------------------------------------</pre>
-        <pre>Total Bayar   : <?php $bayar;
-        echo $bayar = $total - $diskon;
-        ?></pre>
-        <pre>---------------------------------------</pre>
-    </fieldset>
-
+        ?></pre></td>
+    </tr>
+</table>
+<p>------------------------------------------------------------------- (-)</p>
+</center>
+<center>
+<tr>
+    <td><b><pre>Total       : <?php $bayar;
+        echo "Rp." . $bayar = $total - $diskon;
+        ?></pre></b></td>
+<p>----------------------------------------------------------------------</p>
+<h3>THANK YOU!</h3>
+</tr>
+</center>
+<br>
+<br>
+<br>
+<br>
 </body>
 </html>
+
